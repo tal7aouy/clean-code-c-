@@ -1,4 +1,3 @@
-
 # Clean Code in C++
 
 ## Table of Contents
@@ -30,33 +29,33 @@ One more thing: understanding these principles won't instantly transform you int
 
 ### Use meaningful and pronounceable variable names
 
-**Bad:**
+**❌ Bad:**
 ```cpp
 int a; // What does 'a' represent?
 ```
 
-**Good:**
+**✅ Good:**
 ```cpp
 int age; // Clearly indicates the variable's purpose.
 ```
 
 ### Use the same vocabulary for the same type of variable
 
-**Bad:**
+**❌ Bad:**
 ```cpp
 getUserInfo();
 getClientData();
 getCustomerRecord();
 ```
 
-**Good:**
+**✅ Good:**
 ```cpp
 getUser(); // Consistent naming improves readability.
 ```
 
 ### Avoid Mental Mapping
 
-**Bad:**
+**❌ Bad:**
 ```cpp
 std::vector<std::string> cities = {"Austin", "New York", "San Francisco"};
 for (auto c : cities) {
@@ -65,7 +64,7 @@ for (auto c : cities) {
 }
 ```
 
-**Good:**
+**✅ Good:**
 ```cpp
 std::vector<std::string> cities = {"Austin", "New York", "San Francisco"};
 for (auto city : cities) {
@@ -75,12 +74,12 @@ for (auto city : cities) {
 
 ### Use constants for magic numbers
 
-**Bad:**
+**❌ Bad:**
 ```cpp
 double area = 3.14 * radius * radius; // What does 3.14 represent?
 ```
 
-**Good:**
+**✅ Good:**
 ```cpp
 const double PI = 3.14;
 double area = PI * radius * radius; // Clearer meaning.
@@ -90,12 +89,12 @@ double area = PI * radius * radius; // Clearer meaning.
 
 ### Function arguments (2 or fewer ideally)
 
-**Bad:**
+**❌ Bad:**
 ```cpp
 void createMenu(std::string title, std::string body, std::string buttonText, bool cancellable);
 ```
 
-**Good:**
+**✅ Good:**
 ```cpp
 struct MenuConfig {
     std::string title;
@@ -109,7 +108,7 @@ void createMenu(const MenuConfig& config);
 
 ### Functions should do one thing
 
-**Bad:**
+**❌ Bad:**
 ```cpp
 void emailClients(std::vector<Client>& clients) {
     for (auto& client : clients) {
@@ -120,7 +119,7 @@ void emailClients(std::vector<Client>& clients) {
 }
 ```
 
-**Good:**
+**✅ Good:**
 ```cpp
 void emailActiveClients(std::vector<Client>& clients) {
     for (const auto& client : clients) {
@@ -137,19 +136,19 @@ bool isActiveClient(const Client& client) {
 
 ### Function names should clearly indicate what they do
 
-**Bad:**
+**❌ Bad:**
 ```cpp
 void doStuff(int x); // What does this function do?
 ```
 
-**Good:**
+**✅ Good:**
 ```cpp
 void calculateInterest(double principal, double rate, int time); // Clear purpose.
 ```
 
 ### Avoid side effects
 
-**Bad:**
+**❌ Bad:**
 ```cpp
 int count = 0;
 
@@ -158,7 +157,7 @@ void incrementCount() {
 }
 ```
 
-**Good:**
+**✅ Good:**
 ```cpp
 int increment(int count) {
     return count + 1; // Pure function, no side effects.
@@ -169,7 +168,7 @@ int increment(int count) {
 
 ### Prefer using C++11/14/17 features
 
-**Bad:**
+**❌ Bad:**
 ```cpp
 class Animal {
 public:
@@ -177,7 +176,7 @@ public:
 };
 ```
 
-**Good:**
+**✅ Good:**
 ```cpp
 class Animal {
 public:
@@ -187,7 +186,7 @@ public:
 
 ### Use method chaining
 
-**Bad:**
+**❌ Bad:**
 ```cpp
 class Car {
 public:
@@ -197,7 +196,7 @@ public:
 };
 ```
 
-**Good:**
+**✅ Good:**
 ```cpp
 class Car {
 public:
@@ -212,7 +211,7 @@ myCar.setMake("Ford").setModel("F-150").setColor("red");
 
 ### Prefer composition over inheritance
 
-**Bad:**
+**❌ Bad:**
 ```cpp
 class Engine {
 public:
@@ -225,7 +224,7 @@ public:
 };
 ```
 
-**Good:**
+**✅ Good:**
 ```cpp
 class Engine {
 public:
@@ -244,7 +243,7 @@ public:
 
 ### Single Responsibility Principle (SRP)
 
-**Bad:**
+**❌ Bad:**
 ```cpp
 class UserSettings {
 public:
@@ -253,7 +252,7 @@ public:
 };
 ```
 
-**Good:**
+**✅ Good:**
 ```cpp
 class UserAuth {
 public:
@@ -268,7 +267,7 @@ public:
 
 ### Open/Closed Principle (OCP)
 
-**Bad:**
+**❌ Bad:**
 ```cpp
 class Shape {
 public:
@@ -281,7 +280,7 @@ public:
 };
 ```
 
-**Good:**
+**✅ Good:**
 ```cpp
 class Shape {
 public:
@@ -296,7 +295,7 @@ public:
 
 ### Liskov Substitution Principle (LSP)
 
-**Bad:**
+**❌ Bad:**
 ```cpp
 class Rectangle {
 public:
@@ -311,7 +310,7 @@ public:
 };
 ```
 
-**Good:**
+**✅ Good:**
 ```cpp
 class Shape {
 public:
@@ -341,14 +340,14 @@ Testing is crucial for maintaining code quality. Aim for high coverage and write
 
 ### Single concept per test
 
-**Bad:**
+**❌ Bad:**
 ```cpp
 TEST(MomentTest, HandlesDateBoundaries) {
     // Test multiple concepts in one test case
 }
 ```
 
-**Good:**
+**✅ Good:**
 ```cpp
 TEST(MomentTest, Handles30DayMonths) {
     // Test one concept
@@ -363,7 +362,7 @@ TEST(MomentTest, HandlesLeapYear) {
 
 ### Don't ignore caught errors
 
-**Bad:**
+**❌ Bad:**
 ```cpp
 try {
     riskyFunction();
@@ -372,7 +371,7 @@ try {
 }
 ```
 
-**Good:**
+**✅ Good:**
 ```cpp
 try {
     riskyFunction();
@@ -383,7 +382,7 @@ try {
 
 ### Don't ignore rejected promises (if using async)
 
-**Bad:**
+**❌ Bad:**
 ```cpp
 asyncFunction()
     .then(result => {
@@ -394,7 +393,7 @@ asyncFunction()
     });
 ```
 
-**Good:**
+**✅ Good:**
 ```cpp
 asyncFunction()
     .then(result => {
@@ -409,19 +408,19 @@ asyncFunction()
 
 ### Use consistent naming conventions
 
-**Bad:**
+**❌ Bad:**
 ```cpp
 int DaysInWeek = 7;
 ```
 
-**Good:**
+**✅ Good:**
 ```cpp
 const int daysInWeek = 7;
 ```
 
 ### Keep function callers and callees close
 
-**Bad:**
+**❌ Bad:**
 ```cpp
 class PerformanceReview {
 public:
@@ -431,7 +430,7 @@ public:
 };
 ```
 
-**Good:**
+**✅ Good:**
 ```cpp
 class PerformanceReview {
 public:
@@ -455,7 +454,7 @@ public:
 
 ### Only comment complex business logic
 
-**Bad:**
+**❌ Bad:**
 ```cpp
 void hashIt(std::string data) {
     // The hash
@@ -474,7 +473,7 @@ void hashIt(std::string data) {
 }
 ```
 
-**Good:**
+**✅ Good:**
 ```cpp
 void hashIt(std::string data) {
     int hash = 0;
@@ -489,27 +488,26 @@ void hashIt(std::string data) {
 
 ### Avoid leaving commented-out code
 
-**Bad:**
+**❌ Bad:**
 ```cpp
 // void unusedFunction() {}
 ```
 
-**Good:**
+**✅ Good:**
 ```cpp
 // Function removed; see version history.
 ```
 
 ### Avoid journal comments
 
-**Bad:**
+**❌ Bad:**
 ```cpp
-
 void combine(int a, int b) {
     return a + b;
 }
 ```
 
-**Good:**
+**✅ Good:**
 ```cpp
 void combine(int a, int b) {
     return a + b; // Implementation updated for clarity
@@ -518,7 +516,7 @@ void combine(int a, int b) {
 
 ### Avoid positional markers
 
-**Bad:**
+**❌ Bad:**
 ```cpp
 $scope.model = {
     menu: "foo",
@@ -526,7 +524,7 @@ $scope.model = {
 };
 ```
 
-**Good:**
+**✅ Good:**
 ```cpp
 $scope.model = {
     menu: "foo",
